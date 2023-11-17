@@ -2,12 +2,6 @@ rootProject.name = "airline"
 
 include(":services:aircraft")
 
-include(":services:bookings")
-
-include(":services:customers")
-
-include(":services:flights")
-
 pluginManagement {
     val spotlessVersion: String by settings
 
