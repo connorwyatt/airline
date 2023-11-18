@@ -32,6 +32,8 @@ if (useLocalCommonPackages) {
     }
 }
 
+include(":services:aircraft:messages:commands")
+
 include(":services:aircraft:messages:models")
 
 include(":services:aircraft:service")
@@ -63,6 +65,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         val commonVersion: String by settings
         val jUnitVersion: String by settings
+        val kodeinVersion: String by settings
         val kotlinxSerializationVersion: String by settings
         val ktorVersion: String by settings
         val logbackVersion: String by settings
@@ -76,6 +79,13 @@ dependencyResolutionManagement {
         }
 
         create("libraries") {
+            library("kodein-di", "org.kodein.di", "kodein-di").version(kodeinVersion)
+            library(
+                    "kodein-di-framework-ktor-server",
+                    "org.kodein.di",
+                    "kodein-di-framework-ktor-server-jvm"
+                )
+                .version(kodeinVersion)
             library(
                     "kotlinx-serialization-json",
                     "org.jetbrains.kotlinx",

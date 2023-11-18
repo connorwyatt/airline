@@ -1,0 +1,7 @@
+{
+  "rabbitMQ": {
+    "useInMemoryRabbitMQ": false,
+    "connectionString": null,
+    "exchangeName": "aircraft"
+  }
+}
