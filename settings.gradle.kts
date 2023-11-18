@@ -32,11 +32,11 @@ if (useLocalCommonPackages) {
     }
 }
 
-include(":services:aircraft:messages:commands")
+include(":aircraft:messages:commands")
 
-include(":services:aircraft:messages:models")
+include(":aircraft:messages:models")
 
-include(":services:aircraft:service")
+include(":aircraft:service")
 
 pluginManagement {
     val kotlinVersion: String by settings
