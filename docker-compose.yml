@@ -1,0 +1,13 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.12.4-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - type: volume
+        source: rabbitmq-volume-data
+        target: /var/lib/rabbitmq
+
+volumes:
+  rabbitmq-volume-data:

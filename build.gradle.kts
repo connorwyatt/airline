@@ -1,4 +1,8 @@
-plugins { id("com.diffplug.spotless") }
+plugins {
+    id("com.diffplug.spotless")
+    id("org.jetbrains.kotlin.jvm") apply false
+    id("org.jetbrains.kotlin.plugin.serialization") apply false
+}
 
 tasks {
     create("installLocalGitHook") {
@@ -22,4 +26,6 @@ allprojects {
             ktfmt(project.properties["ktfmtVersion"] as String).kotlinlangStyle()
         }
     }
+
+    tasks.withType(Test::class) { useJUnitPlatform() }
 }

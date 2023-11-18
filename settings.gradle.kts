@@ -32,6 +32,8 @@ if (useLocalCommonPackages) {
     }
 }
 
+include(":services:aircraft:messages:models")
+
 include(":services:aircraft:service")
 
 pluginManagement {
@@ -60,9 +62,12 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         val commonVersion: String by settings
+        val jUnitVersion: String by settings
+        val kotlinxSerializationVersion: String by settings
         val ktorVersion: String by settings
         val logbackVersion: String by settings
         val logstashLogbackEncoderVersion: String by settings
+        val striktVersion: String by settings
 
         create("common") {
             commonPackages.forEach { (alias, artifact, _) ->
@@ -71,10 +76,23 @@ dependencyResolutionManagement {
         }
 
         create("libraries") {
+            library(
+                    "kotlinx-serialization-json",
+                    "org.jetbrains.kotlinx",
+                    "kotlinx-serialization-json"
+                )
+                .version(kotlinxSerializationVersion)
             library("ktor-server-core", "io.ktor", "ktor-server-core").version(ktorVersion)
             library("logback-classic", "ch.qos.logback", "logback-classic").version(logbackVersion)
             library("logstash-logbackEncoder", "net.logstash.logback", "logstash-logback-encoder")
                 .version(logstashLogbackEncoderVersion)
+        }
+
+        create("testingLibraries") {
+            library("junit-jupiter", "org.junit.jupiter", "junit-jupiter").version(jUnitVersion)
+            library("junit-jupiter-engine", "org.junit.jupiter", "junit-jupiter-engine")
+                .version(jUnitVersion)
+            library("strikt.core", "io.strikt", "strikt-core").version(striktVersion)
         }
     }
 }
