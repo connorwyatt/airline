@@ -13,6 +13,10 @@ class AircraftId private constructor(private val value: String) {
         return value == other.value
     }
 
+    override fun hashCode(): Int {
+        return value.hashCode()
+    }
+
     companion object {
         private const val PREFIX = "aircraft"
 
