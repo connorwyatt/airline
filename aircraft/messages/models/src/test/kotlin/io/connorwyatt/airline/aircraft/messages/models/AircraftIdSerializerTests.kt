@@ -12,7 +12,10 @@ class AircraftIdSerializerTests {
         val uuid = UUID.randomUUID()
 
         val serializedAircraftId =
-            Json.encodeToString(AircraftIdSerializer, AircraftId.parse("aircraft:$uuid"))
+            Json.encodeToString(
+                AircraftIdSerializer,
+                AircraftId.parse("aircraft:$uuid").getOrThrow()
+            )
 
         expectThat(serializedAircraftId).isEqualTo("\"aircraft:$uuid\"")
     }
@@ -24,6 +27,6 @@ class AircraftIdSerializerTests {
         val serializedAircraftId = "\"aircraft:$uuid\""
         val aircraftId = Json.decodeFromString(AircraftIdSerializer, serializedAircraftId)
 
-        expectThat(aircraftId).isEqualTo(AircraftId.parse("aircraft:$uuid"))
+        expectThat(aircraftId).isEqualTo(AircraftId.parse("aircraft:$uuid").getOrThrow())
     }
 }

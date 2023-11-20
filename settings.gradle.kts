@@ -18,6 +18,7 @@ val commonPackages =
         Triple("mongodb", "mongodb", ":mongodb"),
         Triple("optional", "optional", ":optional"),
         Triple("rabbitmq", "rabbitmq", ":rabbitmq"),
+        Triple("result", "result", ":result"),
         Triple("server", "server", ":server"),
         Triple("time", "time", ":time"),
     )

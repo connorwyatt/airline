@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    implementation(common.result)
+
     implementation(libraries.kotlinx.serialization.json)
 
     testImplementation(testingLibraries.junit.jupiter)

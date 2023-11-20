@@ -9,19 +9,20 @@ import strikt.assertions.isSuccess
 
 class AircraftIdTests {
     @Test
-    fun `AircraftId can be parsed and stringified`() {
+    fun `AircraftId can be parsed and the value can be retrieved`() {
         val uuid = UUID.randomUUID()
 
-        val id = expectCatching { AircraftId.parse("aircraft:${uuid}") }.isSuccess().subject
+        val id =
+            expectCatching { AircraftId.parse("aircraft:${uuid}").getOrThrow() }.isSuccess().subject
 
-        expectThat(id.toString()).isEqualTo("aircraft:${uuid}")
+        expectThat(id.value).isEqualTo("aircraft:${uuid}")
     }
 
     @Test
-    fun `random AircraftId can be generated and stringified`() {
+    fun `random AircraftId can be generated and the value can be parsed`() {
         val id = expectCatching { AircraftId.random() }.isSuccess().subject
 
-        expectCatching { id.toString() }.isSuccess()
+        expectCatching { AircraftId.parse(id.value).getOrThrow() }.isSuccess()
     }
 
     @Test
