@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":aircraft:messages:models"))
+    implementation(projects.aircraft.messages.models)
 
     implementation(common.rabbitmq)
 

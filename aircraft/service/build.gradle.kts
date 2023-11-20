@@ -14,12 +14,15 @@ application {
 }
 
 dependencies {
-    implementation(project(":aircraft:messages:commands"))
-    implementation(project(":aircraft:messages:models"))
+    implementation(projects.aircraft.messages.commands)
+    implementation(projects.aircraft.messages.models)
 
     implementation(common.configuration)
+    implementation(common.optional)
     implementation(common.rabbitmq)
+    implementation(common.result)
     implementation(common.server)
+    implementation(common.validation)
 
     implementation(libraries.kodein.di)
     implementation(libraries.kodein.di.framework.ktor.server)

@@ -1,5 +1,7 @@
 rootProject.name = "airline"
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 val commonGroupId = "com.github.connorwyatt.common-kotlin"
 
 val useLocalCommonPackages: Boolean = false
@@ -21,6 +23,7 @@ val commonPackages =
         Triple("result", "result", ":result"),
         Triple("server", "server", ":server"),
         Triple("time", "time", ":time"),
+        Triple("validation", "validation", ":validation"),
     )
 
 if (useLocalCommonPackages) {

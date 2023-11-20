@@ -4,9 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SeatingConfiguration(
-    val standard: Int = 0,
-    val businessClass: Int = 0,
-    val firstClass: Int = 0
+    val standard: Int,
+    val businessClass: Int,
+    val firstClass: Int,
 ) {
     val totalSeats: Int
         get() = standard + businessClass + firstClass

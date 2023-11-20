@@ -6,7 +6,9 @@ import io.connorwyatt.airline.aircraft.service.commandhandlers.AddAircraftComman
 import io.connorwyatt.common.rabbitmq.kodein.bindCommandHandler
 import io.connorwyatt.common.rabbitmq.kodein.bindCommandQueueDefinition
 import io.connorwyatt.common.rabbitmq.kodein.bindCommandRoutingRules
-import org.kodein.di.*
+import org.kodein.di.DI
+import org.kodein.di.bindProvider
+import org.kodein.di.new
 
 fun applicationDependenciesModule(): DI.Module =
     DI.Module(name = ::applicationDependenciesModule.name) {
@@ -15,4 +17,6 @@ fun applicationDependenciesModule(): DI.Module =
         bindCommandQueueDefinition("commands")
         bindCommandRoutingRules { defaultQueue("commands") }
         bindCommandHandler<AddAircraft> { new(::AddAircraftCommandHandler) }
+
+        bindProvider { new(::AircraftDefinitionValidatorMapper) }
     }

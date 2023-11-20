@@ -4,6 +4,7 @@ plugins {
 }
 
 dependencies {
+    implementation(common.optional)
     implementation(common.result)
 
     implementation(libraries.kotlinx.serialization.json)
