@@ -1,7 +1,7 @@
 package io.connorwyatt.airline.aircraft.messages.models
 
+import io.connorwyatt.airline.shared.ids.HashidGenerator
 import io.connorwyatt.common.result.Result
-import java.util.*
 import kotlinx.serialization.Serializable
 
 @Serializable(with = AircraftIdSerializer::class)
@@ -31,7 +31,7 @@ class AircraftId private constructor(val value: String) {
             return Result.Success(AircraftId(value))
         }
 
-        fun random(): AircraftId = AircraftId("$PREFIX:${UUID.randomUUID()}")
+        fun random(): AircraftId = AircraftId("$PREFIX:${HashidGenerator.generate()}")
 
         interface ParseAircraftIdFailure {
             object InvalidPrefix : ParseAircraftIdFailure

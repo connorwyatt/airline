@@ -1,6 +1,6 @@
 package io.connorwyatt.airline.aircraft.messages.models
 
-import java.util.UUID
+import io.connorwyatt.airline.shared.ids.HashidGenerator
 import kotlinx.serialization.json.Json
 import org.junit.jupiter.api.Test
 import strikt.api.expectThat
@@ -9,24 +9,24 @@ import strikt.assertions.isEqualTo
 class AircraftIdSerializerTests {
     @Test
     fun `AircraftId can be serialized`() {
-        val uuid = UUID.randomUUID()
+        val hashid = HashidGenerator.generate()
 
         val serializedAircraftId =
             Json.encodeToString(
                 AircraftIdSerializer,
-                AircraftId.parse("aircraft:$uuid").getOrThrow()
+                AircraftId.parse("aircraft:$hashid").getOrThrow()
             )
 
-        expectThat(serializedAircraftId).isEqualTo("\"aircraft:$uuid\"")
+        expectThat(serializedAircraftId).isEqualTo("\"aircraft:$hashid\"")
     }
 
     @Test
     fun `AircraftId can be deserialized`() {
-        val uuid = UUID.randomUUID()
+        val hashid = HashidGenerator.generate()
 
-        val serializedAircraftId = "\"aircraft:$uuid\""
+        val serializedAircraftId = "\"aircraft:$hashid\""
         val aircraftId = Json.decodeFromString(AircraftIdSerializer, serializedAircraftId)
 
-        expectThat(aircraftId).isEqualTo(AircraftId.parse("aircraft:$uuid").getOrThrow())
+        expectThat(aircraftId).isEqualTo(AircraftId.parse("aircraft:$hashid").getOrThrow())
     }
 }

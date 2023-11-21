@@ -1,6 +1,6 @@
 package io.connorwyatt.airline.aircraft.messages.models
 
-import java.util.UUID
+import io.connorwyatt.airline.shared.ids.HashidGenerator
 import org.junit.jupiter.api.Test
 import strikt.api.expectCatching
 import strikt.api.expectThat
@@ -10,12 +10,14 @@ import strikt.assertions.isSuccess
 class AircraftIdTests {
     @Test
     fun `AircraftId can be parsed and the value can be retrieved`() {
-        val uuid = UUID.randomUUID()
+        val hashid = HashidGenerator.generate()
 
         val id =
-            expectCatching { AircraftId.parse("aircraft:${uuid}").getOrThrow() }.isSuccess().subject
+            expectCatching { AircraftId.parse("aircraft:${hashid}").getOrThrow() }
+                .isSuccess()
+                .subject
 
-        expectThat(id.value).isEqualTo("aircraft:${uuid}")
+        expectThat(id.value).isEqualTo("aircraft:${hashid}")
     }
 
     @Test
@@ -27,10 +29,10 @@ class AircraftIdTests {
 
     @Test
     fun `AircraftIds with the same value are equal`() {
-        val uuid = UUID.randomUUID()
+        val hashid = HashidGenerator.generate()
 
-        val id1 = AircraftId.parse("aircraft:$uuid")
-        val id2 = AircraftId.parse("aircraft:$uuid")
+        val id1 = AircraftId.parse("aircraft:$hashid")
+        val id2 = AircraftId.parse("aircraft:$hashid")
 
         expectThat(id1).isEqualTo(id2)
     }

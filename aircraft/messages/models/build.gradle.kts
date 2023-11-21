@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    implementation(projects.shared.ids)
+
     implementation(common.optional)
     implementation(common.result)
 
