@@ -7,17 +7,17 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-object AircraftIdSerializer : KSerializer<AircraftId> {
+object AircraftIDSerializer : KSerializer<AircraftID> {
     override val descriptor: SerialDescriptor =
-        PrimitiveSerialDescriptor("AircraftId", PrimitiveKind.STRING)
+        PrimitiveSerialDescriptor("AircraftID", PrimitiveKind.STRING)
 
-    override fun serialize(encoder: Encoder, value: AircraftId) {
+    override fun serialize(encoder: Encoder, value: AircraftID) {
         encoder.encodeString(value.value)
     }
 
-    override fun deserialize(decoder: Decoder): AircraftId {
+    override fun deserialize(decoder: Decoder): AircraftID {
         val string = decoder.decodeString()
-        val result = AircraftId.parse(string)
+        val result = AircraftID.parse(string)
         return result.getOrThrow()
     }
 }

@@ -20,9 +20,9 @@ class AircraftRegistrationSerializerTests {
     @Test
     fun `AircraftRegistration can be deserialized`() {
         val serializedAircraftRegistration = "\"G-ABCD\""
-        val aircraftId =
+        val aircraftID =
             Json.decodeFromString(AircraftRegistrationSerializer, serializedAircraftRegistration)
 
-        expectThat(aircraftId).isEqualTo(AircraftRegistration.parse("G-ABCD").getOrThrow())
+        expectThat(aircraftID).isEqualTo(AircraftRegistration.parse("G-ABCD").getOrThrow())
     }
 }

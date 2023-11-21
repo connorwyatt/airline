@@ -2,7 +2,7 @@ package io.connorwyatt.airline.aircraft.service
 
 import io.connorwyatt.airline.aircraft.messages.commands.AddAircraft
 import io.connorwyatt.airline.aircraft.messages.models.AircraftDefinitionRequest
-import io.connorwyatt.airline.aircraft.messages.models.AircraftId
+import io.connorwyatt.airline.aircraft.messages.models.AircraftID
 import io.connorwyatt.airline.aircraft.messages.models.AircraftReference
 import io.connorwyatt.common.rabbitmq.CommandEnvelope
 import io.connorwyatt.common.rabbitmq.bus.CommandBus
@@ -24,12 +24,12 @@ fun Routing.addAircraftRoutes() {
         // TODO: Handle validation errors
         val definition = validatorMapper.validateAndMap(request).getOrThrow()
 
-        val aircraftId = AircraftId.random()
+        val aircraftID = AircraftID.random()
 
         bus.send(
             CommandEnvelope(
                 AddAircraft(
-                    aircraftId,
+                    aircraftID,
                     definition.registration,
                     definition.manufacturer,
                     definition.model,
@@ -38,6 +38,6 @@ fun Routing.addAircraftRoutes() {
             )
         )
 
-        call.respond(HttpStatusCode.Accepted, AircraftReference(aircraftId))
+        call.respond(HttpStatusCode.Accepted, AircraftReference(aircraftID))
     }
 }
