@@ -1,4 +1,8 @@
 {
+  "eventStore": {
+    "useInMemoryEventStore": false,
+    "connectionString": null
+  },
   "rabbitMQ": {
     "useInMemoryRabbitMQ": false,
     "connectionString": null,

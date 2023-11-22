@@ -38,6 +38,8 @@ if (useLocalCommonPackages) {
 
 include(":aircraft:messages:commands")
 
+include(":aircraft:messages:events")
+
 include(":aircraft:messages:models")
 
 include(":aircraft:service")

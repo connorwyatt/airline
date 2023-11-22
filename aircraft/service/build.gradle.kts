@@ -15,9 +15,11 @@ application {
 
 dependencies {
     implementation(projects.aircraft.messages.commands)
+    implementation(projects.aircraft.messages.events)
     implementation(projects.aircraft.messages.models)
 
     implementation(common.configuration)
+    implementation(common.eventstore)
     implementation(common.optional)
     implementation(common.rabbitmq)
     implementation(common.result)

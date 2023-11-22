@@ -20,6 +20,7 @@ fun applicationConfiguration(configuration: Configuration, diModules: List<DI.Mo
     ApplicationConfiguration.Builder().apply {
         addDIModules(diModules)
 
+        addEventStore(configuration.eventStore)
         addRabbitMQ(configuration.rabbitMQ)
 
         configureRouting { addAircraftRoutes() }
