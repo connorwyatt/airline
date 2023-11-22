@@ -36,11 +36,11 @@ if (useLocalCommonPackages) {
     }
 }
 
-include(":aircraft:messages:commands")
+include(":aircraft:commands")
 
-include(":aircraft:messages:events")
+include(":aircraft:events")
 
-include(":aircraft:messages:models")
+include(":aircraft:models")
 
 include(":aircraft:service")
 

@@ -14,9 +14,9 @@ application {
 }
 
 dependencies {
-    implementation(projects.aircraft.messages.commands)
-    implementation(projects.aircraft.messages.events)
-    implementation(projects.aircraft.messages.models)
+    implementation(projects.aircraft.commands)
+    implementation(projects.aircraft.events)
+    implementation(projects.aircraft.models)
 
     implementation(common.configuration)
     implementation(common.eventstore)
