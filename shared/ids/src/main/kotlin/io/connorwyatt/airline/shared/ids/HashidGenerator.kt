@@ -1,14 +1,12 @@
 package io.connorwyatt.airline.shared.ids
 
-import java.util.*
+import kotlin.random.Random
 import org.hashids.Hashids
 
 object HashidGenerator {
-    private val hashids = Hashids("HASHID_SALT", 16)
+    private val hashids = Hashids("airline", 16)
 
     fun generate(): String {
-        return hashids.encode(
-            *UUID.randomUUID().toString().toByteArray().map { it.toLong() }.toLongArray()
-        )
+        return hashids.encode(Random.nextLong(9007199254740992L))
     }
 }
