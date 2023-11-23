@@ -38,6 +38,8 @@ if (useLocalCommonPackages) {
 
 include(":aircraft:commands")
 
+include(":aircraft:data")
+
 include(":aircraft:events")
 
 include(":aircraft:models")
@@ -79,6 +81,7 @@ dependencyResolutionManagement {
         val ktorVersion: String by settings
         val logbackVersion: String by settings
         val logstashLogbackEncoderVersion: String by settings
+        val mongoDBDriverVersion: String by settings
         val striktVersion: String by settings
 
         create("common") {
@@ -106,6 +109,8 @@ dependencyResolutionManagement {
             library("logback-classic", "ch.qos.logback", "logback-classic").version(logbackVersion)
             library("logstash-logbackEncoder", "net.logstash.logback", "logstash-logback-encoder")
                 .version(logstashLogbackEncoderVersion)
+            library("mongoDB-driver", "org.mongodb", "mongodb-driver-kotlin-coroutine")
+                .version(mongoDBDriverVersion)
         }
 
         create("testingLibraries") {

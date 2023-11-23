@@ -11,7 +11,11 @@ fun main() {
 
     Server(
             8000,
-            applicationConfiguration(configuration, listOf(applicationDependenciesModule())).build()
+            applicationConfiguration(
+                    configuration,
+                    listOf(applicationDependenciesModule(configuration))
+                )
+                .build()
         )
         .start()
 }
@@ -21,6 +25,7 @@ fun applicationConfiguration(configuration: Configuration, diModules: List<DI.Mo
         addDIModules(diModules)
 
         addEventStore(configuration.eventStore)
+        addMongoDB(configuration.mongoDB)
         addRabbitMQ(configuration.rabbitMQ)
 
         configureRouting { addAircraftRoutes() }

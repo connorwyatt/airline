@@ -15,11 +15,13 @@ application {
 
 dependencies {
     implementation(projects.aircraft.commands)
+    implementation(projects.aircraft.data)
     implementation(projects.aircraft.events)
     implementation(projects.aircraft.models)
 
     implementation(common.configuration)
     implementation(common.eventstore)
+    implementation(common.mongodb)
     implementation(common.optional)
     implementation(common.rabbitmq)
     implementation(common.result)

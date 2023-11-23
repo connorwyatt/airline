@@ -1,7 +1,14 @@
 {
+  "data": {
+    "repositoryImplementation": "MongoDB"
+  },
   "eventStore": {
     "useInMemoryEventStore": false,
     "connectionString": null
+  },
+  "mongoDB": {
+    "connectionString": null,
+    "databaseName": "aircraft"
   },
   "rabbitMQ": {
     "useInMemoryRabbitMQ": false,
