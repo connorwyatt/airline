@@ -21,7 +21,7 @@ class DuplicateAircraftProcessManager(
 
     private suspend fun handleEvent(event: AircraftAdded, metadata: EventMetadata) {
         if (repository.getAircraftIDForRegistration(event.registration) != null) {
-            bus.send(CommandEnvelope(RejectAircraft(event.aircraftID)))
+            bus.send(CommandEnvelope(RejectAircraft(event.aircraftID, REASON)))
             return
         }
 
@@ -37,5 +37,9 @@ class DuplicateAircraftProcessManager(
 
     override suspend fun updateStreamPosition(cursor: Cursor) {
         repository.updateStreamPosition(cursor)
+    }
+
+    companion object {
+        private const val REASON = "An aircraft with this registration already exists."
     }
 }
